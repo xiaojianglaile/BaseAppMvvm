@@ -8,6 +8,8 @@
             name="secondItem"
             type="com.jimmy.baseapp.second.SecondListItemViewModel"/>
 
+        <import type="com.jimmy.baseapp.R" />
+
     </data>
 
 
@@ -26,8 +28,8 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            bind:failedImageRes="@{secondItem.failedUserIcon}"
-            bind:placeImageRes="@{secondItem.defaultUserIcon}"/>
+            bind:failedImageRes="@{R.mipmap.ic_launcher}"
+            bind:placeImageRes="@{R.mipmap.ic_launcher}"/>
     </LinearLayout>
 
 

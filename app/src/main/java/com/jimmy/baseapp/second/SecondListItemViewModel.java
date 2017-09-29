@@ -1,9 +1,7 @@
 package com.jimmy.baseapp.second;
 
 import android.content.Context;
-import android.widget.Toast;
 
-import com.jimmy.baseapp.R;
 import com.jimmy.baseapp.config.MessageToken;
 import com.jimmy.baseapp.entity.ItemData;
 import com.jimmy.baseapp.three.ThreeFragment;
@@ -16,9 +14,6 @@ import com.sandboxol.common.utils.TemplateUtils;
  * Created by Jimmy on 2017/9/27 0027.
  */
 public class SecondListItemViewModel extends IListItemViewModel<ItemData> {
-
-    public int defaultUserIcon = R.mipmap.ic_launcher;
-    public int failedUserIcon = R.mipmap.ic_launcher;
 
     public SecondListItemViewModel(Context context, ItemData item) {
         super(context, item);

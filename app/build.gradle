@@ -5,7 +5,7 @@ android {
     compileSdkVersion android_compile_version
     buildToolsVersion android_version
     defaultConfig {
-        applicationId "com.jimmy.baseapp"
+        applicationId "com.jimmy.baseapp.mvvm"
         minSdkVersion android_min_sdk_version
         targetSdkVersion android_target_sdk_version
         versionCode 1

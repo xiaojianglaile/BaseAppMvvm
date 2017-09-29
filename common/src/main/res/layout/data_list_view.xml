@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.sandboxol.common.binding.viewmodel.DataListViewModel"/>
+
+        <import type="me.tatarka.bindingcollectionadapter.LayoutManagers"/>
+
+        <import type="android.view.View"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            bind:onRefreshCommand="@{viewModel.onRefreshCommand}"
+            bind:setRefreshing="@{viewModel.viewStyle.isRefreshing}">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvData"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                bind:itemView="@{viewModel.itemView}"
+                bind:items="@{viewModel.itemViewModel}"/>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@{viewModel.viewStyle.emptyText}"
+            android:visibility="@{viewModel.viewStyle.isShowEmptyView ? View.VISIBLE : View.GONE}"/>
+
+    </RelativeLayout>
+
+</layout>

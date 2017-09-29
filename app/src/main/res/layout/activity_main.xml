@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="MainModel"
+            type="com.jimmy.baseapp.main.MainListModel"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="MAIN"/>
+
+        <com.sandboxol.common.widget.PageRecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            bind:model="@{MainModel}"
+            bind:page="0"
+            bind:size="20"/>
+
+    </LinearLayout>
+
+</layout>
+

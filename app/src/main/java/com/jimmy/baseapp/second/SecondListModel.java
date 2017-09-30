@@ -8,10 +8,10 @@ import com.jimmy.baseapp.config.MessageToken;
 import com.jimmy.baseapp.entity.AppConfig;
 import com.jimmy.baseapp.entity.ItemData;
 import com.jimmy.baseapp.web.Ols;
-import com.sandboxol.common.binding.viewmodel.IListItemViewModel;
 import com.sandboxol.common.base.web.HttpResponse;
 import com.sandboxol.common.base.web.OnResponseListener;
 import com.sandboxol.common.binding.model.datarv.IDataModel;
+import com.sandboxol.common.binding.viewmodel.IListItemViewModel;
 import com.sandboxol.common.utils.ResponseUtils;
 
 import java.util.ArrayList;
@@ -75,7 +75,7 @@ public class SecondListModel extends IDataModel<ItemData> {
     }
 
     @Override
-    public Class getItemViewModelClass() {
-        return SecondListItemViewModel.class;
+    public String getReplaceToken() {
+        return MessageToken.SECOND_ITEM_REPLACE_TOKEN;
     }
 }

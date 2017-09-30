@@ -5,7 +5,6 @@ import android.content.Context;
 import com.sandboxol.common.base.web.HttpResponse;
 import com.sandboxol.common.base.web.OnResponseListener;
 import com.sandboxol.common.binding.model.IListModel;
-import com.sandboxol.common.binding.viewmodel.IListItemViewModel;
 
 import java.util.List;
 
@@ -30,12 +29,12 @@ public abstract class IDataModel<T> implements IListModel<T> {
     }
 
     @Override
-    public Class getItemViewModelClass() {
-        return IListItemViewModel.class;
+    public String getInsertToken() {
+        return null;
     }
 
     @Override
-    public String getInsertToken() {
+    public String getReplaceToken() {
         return null;
     }
 

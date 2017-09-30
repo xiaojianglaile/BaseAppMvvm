@@ -12,6 +12,9 @@ import com.sandboxol.common.binding.viewmodel.IListItemViewModel;
 import com.sandboxol.common.command.ReplyCommand;
 import com.sandboxol.common.messenger.Messenger;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Jimmy on 2017/9/27 0027.
  */
@@ -31,6 +34,12 @@ public class MainListItemViewModel extends IListItemViewModel<ItemData> {
     protected void onClick() {
         Toast.makeText(context, item.getTitle(), Toast.LENGTH_SHORT).show();
         context.startActivity(new Intent(context, SecondActivity.class));
-        Messenger.getDefault().send(InsertMsg.createIndex(item, 2), MessageToken.MAIN_ITEM_INSERT_TOKEN);
+        List<ItemData> items = new ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            ItemData item = new ItemData();
+            item.setTitle("MainItem:" + i);
+            items.add(item);
+        }
+        Messenger.getDefault().send(InsertMsg.createIndex(items, 2), MessageToken.MAIN_ITEM_INSERT_TOKEN);
     }
 }

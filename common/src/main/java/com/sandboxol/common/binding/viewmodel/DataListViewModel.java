@@ -27,7 +27,6 @@ public class DataListViewModel<T> extends IListViewModel {
         super(context, model);
         this.model = model;
         loadData();
-        registerMessenger();
     }
 
     public ReplyCommand onRefreshCommand = new ReplyCommand(this::onRefresh);
@@ -41,12 +40,11 @@ public class DataListViewModel<T> extends IListViewModel {
         dataListModel.loadData(model, new OnResponseListener<HttpResponse<List<T>>>() {
             @Override
             public void onSuccess(HttpResponse<List<T>> data) {
-                clearItemViewModel();
+                clearItems();
                 Observable.just(data)
                         .filter(d -> HttpCode.SUCCESS == d.getCode())
                         .filter(d -> d.getData() != null)
-                        .flatMap(d -> Observable.from(d.getData()))
-                        .subscribe(item -> addItemViewModel(model.getItemViewModel(item)));
+                        .subscribe(d -> addItems(d.getData()));
                 hideEmptyView();
                 setRefreshing(false);
             }

@@ -7,5 +7,6 @@ public interface MessageToken {
 
     String MAIN_ITEM_INSERT_TOKEN = "main.item.insert.token";
     String SECOND_ITEM_REMOVE_TOKEN = "second.item.remove.token";
+    String SECOND_ITEM_REPLACE_TOKEN = "second.item.replace.token";
 
 }

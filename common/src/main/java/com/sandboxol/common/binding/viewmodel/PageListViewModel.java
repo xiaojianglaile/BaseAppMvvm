@@ -35,7 +35,6 @@ public class PageListViewModel<T> extends IListViewModel {
         this.size = pageSize;
         this.model = model;
         onRefresh();
-        registerMessenger();
     }
 
     public ReplyCommand onRefreshCommand = new ReplyCommand(this::onRefresh);
@@ -61,13 +60,12 @@ public class PageListViewModel<T> extends IListViewModel {
             @Override
             public void onSuccess(HttpResponse<List<T>> data) {
                 if (isRefresh)
-                    clearItemViewModel();
+                    clearItems();
                 Observable.just(data)
                         .filter(d -> HttpCode.SUCCESS == d.getCode())
                         .filter(d -> d.getData() != null)
                         .doOnNext(d -> isMore = d.getData().size() >= size)
-                        .flatMap(d -> Observable.from(d.getData()))
-                        .subscribe(item -> addItemViewModel(model.getItemViewModel(item)));
+                        .subscribe(d -> addItems(d.getData()));
                 hideEmptyView();
                 setRefreshing(false);
             }

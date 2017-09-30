@@ -2,6 +2,7 @@ package com.sandboxol.common.binding.model.pagerv;
 
 import android.content.Context;
 
+import com.sandboxol.common.R;
 import com.sandboxol.common.base.web.HttpResponse;
 import com.sandboxol.common.base.web.OnResponseListener;
 import com.sandboxol.common.binding.model.IListModel;
@@ -41,7 +42,7 @@ public abstract class IPageModel<T> implements IListModel<T> {
     @Override
     public String getErrorHint() {
         if (errorHint == null || "".equals(errorHint))
-            return "No data";
+            errorHint = context.getResources().getString(R.string.no_data);
         return errorHint;
     }
 }

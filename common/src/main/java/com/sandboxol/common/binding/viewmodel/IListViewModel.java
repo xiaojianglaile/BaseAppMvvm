@@ -5,6 +5,7 @@ import android.databinding.ObservableArrayList;
 import android.databinding.ObservableList;
 import android.text.TextUtils;
 
+import com.sandboxol.common.R;
 import com.sandboxol.common.binding.model.IListModel;
 import com.sandboxol.common.binding.model.msg.InsertMsg;
 import com.sandboxol.common.binding.model.msg.RemoveMsg;
@@ -86,14 +87,14 @@ public abstract class IListViewModel<T> implements ViewModel {
     }
 
     protected void addItems(List<Object> items, int index, InsertMsg.INSERT_MODE mode) {
-        List<IListItemViewModel<T>> viewModels = new ArrayList<>();
-        Observable.from(items).subscribe(item -> viewModels.add(model.getItemViewModel(item)));
+        List<IListItemViewModel<T>> itemViewModels = new ArrayList<>();
+        Observable.from(items).subscribe(item -> itemViewModels.add(model.getItemViewModel(item)));
         if (mode == InsertMsg.INSERT_MODE.END) {
-            itemViewModel.addAll(viewModels);
+            itemViewModel.addAll(itemViewModels);
         } else if (mode == InsertMsg.INSERT_MODE.FIRST) {
-            itemViewModel.addAll(0, viewModels);
+            itemViewModel.addAll(0, itemViewModels);
         } else {
-            itemViewModel.addAll(index, viewModels);
+            itemViewModel.addAll(index, itemViewModels);
         }
     }
 
@@ -170,7 +171,7 @@ public abstract class IListViewModel<T> implements ViewModel {
             if (!TextUtils.isEmpty(error)) {
                 viewStyle.setEmptyText(error);
             } else {
-                viewStyle.setEmptyText(model != null ? model.getErrorHint() : "No data");
+                viewStyle.setEmptyText(model != null ? model.getErrorHint() : context.getResources().getString(R.string.no_data));
             }
         }
     }
